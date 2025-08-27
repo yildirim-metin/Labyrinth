@@ -1,10 +1,6 @@
-﻿using LabyrinthLibrary.Commons;
-using LabyrinthLibrary.Controllers;
-using LabyrinthLibrary.Views;
+﻿using LabyrinthLibrary.Commons.Factories;
 
 Console.WriteLine("Hello Labyrinth");
 
-LabyrinthBuilder builder = new();
-LabyrinthView view = new();
-LabyrinthController controller = new(builder["Test"], view);
-controller.Start();
+LabyrinthFactory factory = new();
+factory.CreateController().Start();
