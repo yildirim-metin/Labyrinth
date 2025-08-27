@@ -1,6 +1,6 @@
 ﻿using LabyrinthLibrary.Models;
 
-namespace LabyrinthLibrary.Commons;
+namespace LabyrinthLibrary.Commons.Builders;
 
 public class LabyrinthBuilder
 {

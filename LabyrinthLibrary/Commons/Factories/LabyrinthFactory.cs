@@ -1,4 +1,5 @@
-﻿using LabyrinthLibrary.Controllers;
+﻿using LabyrinthLibrary.Commons.Builders;
+using LabyrinthLibrary.Controllers;
 using LabyrinthLibrary.Models;
 using LabyrinthLibrary.Views;
 
