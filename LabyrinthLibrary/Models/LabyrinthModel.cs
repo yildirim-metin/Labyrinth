@@ -1,4 +1,4 @@
-﻿namespace LabyrinthLibrary;
+﻿namespace LabyrinthLibrary.Models;
 
 public class LabyrinthModel(string name)
 {

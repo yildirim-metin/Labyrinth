@@ -1,4 +1,7 @@
-﻿namespace LabyrinthLibrary;
+﻿using LabyrinthLibrary.Models;
+using LabyrinthLibrary.Views;
+
+namespace LabyrinthLibrary.Controllers;
 
 public class LabyrinthController
 {

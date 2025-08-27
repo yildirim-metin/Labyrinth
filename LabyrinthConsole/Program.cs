@@ -1,4 +1,6 @@
-﻿using LabyrinthLibrary;
+﻿using LabyrinthLibrary.Commons;
+using LabyrinthLibrary.Controllers;
+using LabyrinthLibrary.Views;
 
 Console.WriteLine("Hello Labyrinth");
 

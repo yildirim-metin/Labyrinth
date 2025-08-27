@@ -1,4 +1,6 @@
-﻿namespace LabyrinthLibrary;
+﻿using LabyrinthLibrary.Models;
+
+namespace LabyrinthLibrary.Views;
 
 public class LabyrinthView
 {
