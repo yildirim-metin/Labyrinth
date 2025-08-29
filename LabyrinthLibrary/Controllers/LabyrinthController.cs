@@ -17,12 +17,6 @@ public class LabyrinthController
 
     public void Start()
     {
-        View.Display(Model, "Start :");
-
-        LabyrinthFileReader reader = new("D:\\_DEV\\Projets\\.NET\\Labyrinth\\LabyrinthLibrary\\test.laby");
-        reader.ReadFile();
-
-        LabyrinthPosition labyrinthPosition = new(1, 2);
-        Console.WriteLine(labyrinthPosition.CompareTo(new LabyrinthPosition(0, 3)));
+        View.Display(Model, "View test.laby");
     }
 }

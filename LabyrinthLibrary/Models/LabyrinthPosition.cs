@@ -25,4 +25,9 @@ public class LabyrinthPosition : IComparable
         }
         return result;
     }
+
+    public override string ToString()
+    {
+        return $"Row: {Row}, Column: {Column}";
+    }
 }

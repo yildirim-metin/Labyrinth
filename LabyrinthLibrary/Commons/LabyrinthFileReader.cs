@@ -1,4 +1,6 @@
-﻿namespace LabyrinthLibrary.Commons;
+﻿using LabyrinthLibrary.Models;
+
+namespace LabyrinthLibrary.Commons;
 
 public class LabyrinthFileReader
 {
@@ -9,7 +11,7 @@ public class LabyrinthFileReader
         Path = path;
     }
 
-    public void ReadFile()
+    public IEnumerable<KeyValuePair<LabyrinthPosition, string>> ReadFile()
     {
         StreamReader sr = new(Path);
 
@@ -24,7 +26,9 @@ public class LabyrinthFileReader
             {
                 if (c != ' ')
                 {
-                    Console.WriteLine($"char: {c}, ligne: {row}, colonne: {column}");
+                    yield return KeyValuePair.Create(
+                        new LabyrinthPosition(row, column),
+                        char.ToString(c));
                 }
                 column++;
             }
