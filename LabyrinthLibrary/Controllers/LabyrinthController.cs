@@ -19,7 +19,7 @@ public class LabyrinthController
     {
         View.Display(Model, "Start :");
 
-        LabyrinthFileReader reader = new("E:\\_DEV\\Projets\\.NET\\Labyrinth\\LabyrinthLibrary\\test.laby");
+        LabyrinthFileReader reader = new("D:\\_DEV\\Projets\\.NET\\Labyrinth\\LabyrinthLibrary\\test.laby");
         reader.ReadFile();
     }
 }

@@ -2,5 +2,5 @@
 
 public class Wall : ILabyrinthElement
 {
-    public override char Symbol => '*';
+    public char Symbol => '*';
 }

@@ -13,12 +13,24 @@ public class LabyrinthFileReader
     {
         StreamReader sr = new(Path);
 
-        string s = string.Empty;
-        while (!sr.EndOfStream)
+        int row = 0;
+        int column;
+
+        string? line = sr.ReadLine();
+        while (!sr.EndOfStream || line != null)
         {
-            int c = sr.Read();
-            s += (char)c;
+            column = 0;
+            foreach (var c in line!)
+            {
+                if (c != ' ')
+                {
+                    Console.WriteLine($"char: {c}, ligne: {row}, colonne: {column}");
+                }
+                column++;
+            }
+            
+            line = sr.ReadLine();
+            row++;
         }
-        Console.WriteLine(s);
     }
 }

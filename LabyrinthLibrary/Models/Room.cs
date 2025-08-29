@@ -2,5 +2,5 @@
 
 public class Room : ILabyrinthElement
 {
-    public override char Symbol => '.';
+    public char Symbol => '.';
 }
