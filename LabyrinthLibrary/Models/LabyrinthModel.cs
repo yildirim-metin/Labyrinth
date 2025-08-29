@@ -1,8 +1,30 @@
-﻿namespace LabyrinthLibrary.Models;
+﻿using System.Collections;
+using System.Data;
 
-public class LabyrinthModel(string name)
+namespace LabyrinthLibrary.Models;
+
+public class LabyrinthModel : IEnumerable
 {
-    public string Name { get; set; } = name;
+    private readonly SortedDictionary<LabyrinthPosition, ILabyrinthElement> _elements;
+
+    public string Name { get; set; }
+
+    public ILabyrinthElement this[LabyrinthPosition position]
+    {
+        get => _elements[position];
+        set => _elements[position] = value;
+    }
+
+    public LabyrinthModel(string name)
+    {
+        Name = name;
+        _elements = [];
+    }
+
+    public IEnumerator GetEnumerator()
+    {
+        return _elements.GetEnumerator();
+    }
 
     public override string ToString()
     {
