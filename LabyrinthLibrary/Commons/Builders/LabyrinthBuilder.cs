@@ -14,7 +14,7 @@ public class LabyrinthBuilder
             LabyrinthFileReader reader = new("D:\\_DEV\\Projets\\.NET\\Labyrinth\\LabyrinthLibrary\\test.laby");
             foreach (var item in reader.ReadFile())
             {
-                model[item.Key] = _factories[item.Value].Invoke();
+                model[item.Key] = _factories.TryGetValue(item.Value, out Create? value) ? value.Invoke() : _factories["."].Invoke();   
             }
 
             return model;

@@ -11,6 +11,20 @@ public class LabyrinthPosition : IComparable
         Column = column;
     }
 
+    public override bool Equals(object? obj)
+    {
+        if (obj is LabyrinthPosition lp)
+        {
+            return Row == lp.Row && Column == lp.Column;
+        }
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Row, Column);
+    }
+
     public int CompareTo(object? obj)
     {
         if (obj is not LabyrinthPosition lp)
