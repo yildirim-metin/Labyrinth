@@ -21,5 +21,8 @@ public class LabyrinthController
 
         LabyrinthFileReader reader = new("D:\\_DEV\\Projets\\.NET\\Labyrinth\\LabyrinthLibrary\\test.laby");
         reader.ReadFile();
+
+        LabyrinthPosition labyrinthPosition = new(1, 2);
+        Console.WriteLine(labyrinthPosition.CompareTo(new LabyrinthPosition(0, 3)));
     }
 }
