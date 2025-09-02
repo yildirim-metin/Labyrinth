@@ -1,5 +1,4 @@
-﻿using LabyrinthLibrary.Commons;
-using LabyrinthLibrary.Models;
+﻿using LabyrinthLibrary.Models;
 using LabyrinthLibrary.Views;
 
 namespace LabyrinthLibrary.Controllers;
