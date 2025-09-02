@@ -14,7 +14,9 @@ public class LabyrinthBuilder
             LabyrinthFileReader reader = new("D:\\_DEV\\Projets\\.NET\\Labyrinth\\LabyrinthLibrary\\test.laby");
             foreach (var item in reader.ReadFile())
             {
-                model[item.Key] = _factories.TryGetValue(item.Value, out Create? value) ? value.Invoke() : _factories["."].Invoke();   
+                model[item.Key] = _factories.TryGetValue(item.Value, out Create? value)
+                    ? value.Invoke()
+                    : _factories["."].Invoke();
             }
 
             return model;
@@ -26,7 +28,8 @@ public class LabyrinthBuilder
         _factories = new()
         {
             { "*", () => new Wall() },
-            { ".", () => new Room() }
+            { ".", () => new Room() },
+            { "O", () => new Room(new Person()) },
         };
     }
 

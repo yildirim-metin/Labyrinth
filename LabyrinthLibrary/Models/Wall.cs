@@ -1,6 +1,14 @@
-﻿namespace LabyrinthLibrary.Models;
+﻿using LabyrinthLibrary.Commons.Exceptions;
+
+namespace LabyrinthLibrary.Models;
 
 public class Wall : ILabyrinthElement
 {
     public char Symbol => '*';
+
+    public ILabyrinthObject? Content 
+    {
+        get => null;
+        set => throw new LabyrinthException("Un mur ne contient pas d'objet.");
+    }
 }

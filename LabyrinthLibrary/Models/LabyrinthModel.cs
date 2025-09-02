@@ -8,10 +8,19 @@ public class LabyrinthModel : IEnumerable
 
     public string Name { get; init; }
 
+    public Person? Person { get; private set; }
+
     public ILabyrinthElement this[LabyrinthPosition position]
     {
         get => _elements[position];
-        set => _elements[position] = value;
+        set
+        {
+            if (value.Content is Person)
+            {
+                Person = new Person(position);
+            }
+            _elements[position] = value;
+        }
     }
 
     public LabyrinthModel(string name)

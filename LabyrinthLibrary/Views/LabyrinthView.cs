@@ -6,7 +6,7 @@ public class LabyrinthView
 {
     public void Display(LabyrinthModel model, string message)
     {
-        Console.WriteLine(message + $" model: {model}");
+        Console.WriteLine(message);
 
         int row = 0;
         int column = 0;
