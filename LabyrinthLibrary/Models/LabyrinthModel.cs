@@ -41,15 +41,18 @@ public class LabyrinthModel : IEnumerable
             throw new OutOfLabyrinthException();
         }
 
+        LabyrinthPosition originPosition = person.Position;
         LabyrinthPosition destination = person.Position[direction];
         if (!_elements.TryGetValue(destination, out ILabyrinthElement? element))
         {
             person.Position = null;
+            _elements[originPosition].Content = null;
             throw new OutOfLabyrinthException();
         }
 
-        _elements[person.Position] = new Room();
+
         element.Visit(person);
+        _elements[originPosition].Content = null;
         person.Position = destination;
      }
 

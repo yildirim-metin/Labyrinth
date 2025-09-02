@@ -22,7 +22,7 @@ public class LabyrinthController
         {
             Console.Clear();
             View.Display(Model, "View test.laby");
-
+            
             ConsoleKeyInfo infoKey = Console.ReadKey(true);
             if (IsPlayerExitedGame(infoKey))
             {
