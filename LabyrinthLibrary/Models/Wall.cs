@@ -11,4 +11,9 @@ public class Wall : ILabyrinthElement
         get => null;
         set => throw new LabyrinthException("Un mur ne contient pas d'objet.");
     }
+
+    public void Visit(Person person)
+    {
+        throw new LabyrinthException("Les personnages ne traversent pas les murs.");
+    }
 }

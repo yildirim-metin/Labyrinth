@@ -5,6 +5,21 @@ public class LabyrinthPosition : IComparable
     public int Row { get; init; }
     public int Column { get; init; }
 
+    public LabyrinthPosition this[Direction direction]
+    {
+        get
+        {
+            return direction switch
+            {
+                Direction.North => new(Row - 1, Column),
+                Direction.South => new(Row + 1, Column),
+                Direction.East => new(Row, Column - 1),
+                Direction.West => new(Row, Column + 1),
+                _ => this,
+            };
+        }
+    }
+
     public LabyrinthPosition(int row, int column)
     {
         Row = row;

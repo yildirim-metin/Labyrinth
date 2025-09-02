@@ -1,5 +1,5 @@
 ﻿namespace LabyrinthLibrary.Models;
 
-public interface ILabyrinthObject : ISymbol
+public interface ILabyrinthObject : ISymbol, IPersonVisitable
 {
 }

@@ -15,4 +15,9 @@ public class Room : ILabyrinthElement
     {
         Content = content;
     }
+
+    public void Visit(Person person)
+    {
+        Content = person;
+    }
 }

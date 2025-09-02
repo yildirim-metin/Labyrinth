@@ -34,6 +34,25 @@ public class LabyrinthModel : IEnumerable
         return _elements.GetEnumerator();
     }
 
+    public void Move(Person person, Direction direction)
+    {
+        if (person.Position == null)
+        {
+            throw new OutOfLabyrinthException();
+        }
+
+        LabyrinthPosition destination = person.Position[direction];
+        if (!_elements.TryGetValue(destination, out ILabyrinthElement? element))
+        {
+            person.Position = null;
+            throw new OutOfLabyrinthException();
+        }
+
+        _elements[person.Position] = new Room();
+        element.Visit(person);
+        person.Position = destination;
+     }
+
     public override string ToString()
     {
         string elements = string.Empty;
