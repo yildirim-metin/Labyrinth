@@ -50,7 +50,6 @@ public class LabyrinthModel : IEnumerable
             throw new OutOfLabyrinthException();
         }
 
-
         element.Visit(person);
         _elements[originPosition].Content = null;
         person.Position = destination;

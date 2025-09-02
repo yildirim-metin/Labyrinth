@@ -1,4 +1,5 @@
-﻿using LabyrinthLibrary.Models;
+﻿using LabyrinthLibrary.Commons.Exceptions;
+using LabyrinthLibrary.Models;
 using LabyrinthLibrary.Views;
 
 namespace LabyrinthLibrary.Controllers;
@@ -37,7 +38,7 @@ public class LabyrinthController
                     {
                         Model.Move(Model.Person!, (Direction)direction);
                     }
-                    catch (Exception ex)
+                    catch (LabyrinthException ex)
                     {
                         Console.WriteLine();
                         Console.ForegroundColor = ConsoleColor.Red;
