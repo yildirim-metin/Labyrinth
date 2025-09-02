@@ -18,11 +18,11 @@ public class LabyrinthController
     public void Start()
     {
         bool exit = false;
+        string message = string.Empty;
 
         while (!exit)
         {
-            Console.Clear();
-            View.Display(Model, "View test.laby");
+            View.Display(Model, message);
             
             ConsoleKeyInfo infoKey = Console.ReadKey(true);
             if (IsPlayerExitedGame(infoKey))
@@ -37,14 +37,11 @@ public class LabyrinthController
                     try
                     {
                         Model.Move(Model.Person!, (Direction)direction);
+                        message = string.Empty;
                     }
                     catch (LabyrinthException ex)
                     {
-                        Console.WriteLine();
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine(ex.Message);
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        Thread.Sleep(1000);
+                        message = ex.Message;
                     }
                 }
             }

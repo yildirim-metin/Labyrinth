@@ -4,9 +4,9 @@ namespace LabyrinthLibrary.Views;
 
 public class LabyrinthView
 {
-    public void Display(LabyrinthModel model, string message)
+    public void Display(LabyrinthModel model, string? message)
     {
-        Console.WriteLine(message);
+        Console.Clear();
 
         int row = 0;
         int column = 0;
@@ -27,6 +27,14 @@ public class LabyrinthView
                 Console.Write(element.Value.Symbol);
                 column++;
             }
+        }
+
+        if (!string.IsNullOrEmpty(message))
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
     }
 
