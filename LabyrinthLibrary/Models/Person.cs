@@ -5,11 +5,14 @@ public class Person : ILabyrinthObject
     public char Symbol => 'O';
     public LabyrinthPosition? Position { get; set; }
 
+    public ICollection<ILabyrinthObject> Bag { get; set; }
+
     public Person()
     {
+        Bag = [];
     }
 
-    public Person(LabyrinthPosition position)
+    public Person(LabyrinthPosition position) : this()
     {
         Position = position;
     }

@@ -30,6 +30,7 @@ public class LabyrinthBuilder
             { "*", () => new Wall() },
             { ".", () => new Room() },
             { "O", () => new Room(new Person()) },
+            { "|", () => new Door() },
         };
     }
 

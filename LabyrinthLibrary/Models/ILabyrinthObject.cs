@@ -2,4 +2,5 @@
 
 public interface ILabyrinthObject : ISymbol, IPersonVisitable
 {
+
 }
