@@ -30,6 +30,11 @@ public class LabyrinthModel : IEnumerable
         }
     }
 
+    public Person this[char key]
+    {
+        get => _personMap[key];
+    }
+
     public LabyrinthModel(string name)
     {
         Name = name;

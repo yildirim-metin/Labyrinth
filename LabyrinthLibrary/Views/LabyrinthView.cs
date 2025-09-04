@@ -1,4 +1,5 @@
 ﻿using LabyrinthLibrary.Models;
+using System.Text;
 
 namespace LabyrinthLibrary.Views;
 
@@ -8,7 +9,7 @@ public class LabyrinthView
 
     public void Display(LabyrinthModel model, string? message)
     {
-        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.OutputEncoding = Encoding.UTF8;
         Console.Clear();
 
         DisplayLabyrinth(model);
@@ -20,25 +21,30 @@ public class LabyrinthView
 
     private static void DisplayInventory(LabyrinthModel model)
     {
-        if (model.Person == null)
+        StringBuilder stringBuilder = new("\n\n");
+        
+        foreach (char key in model.PersonKeys)
         {
-            return;
+            Person person = model[key];
+
+            stringBuilder.Append($"""
+                ===========================
+                ===== INVENTAIRE de {person.Symbol} =====
+                ===========================
+                """);
+
+            if (person.Bag.Count == 0)
+            {
+                stringBuilder.Append("\n\nInventaire vide\n\n");
+            }
+
+            foreach (var obj in person.Bag)
+            {
+                stringBuilder.Append($"\n\n{obj}\n\n");
+            }
         }
 
-        Console.WriteLine();
-        Console.WriteLine("======================");
-        Console.WriteLine("===== INVENTAIRE =====");
-        Console.WriteLine("======================");
-
-        if (model.Person.Bag.Count == 0)
-        {
-            Console.WriteLine("L'inventaire est vide.");
-        }
-
-        foreach (var o in model.Person.Bag)
-        {
-            Console.WriteLine(o);
-        }
+        Console.WriteLine(stringBuilder.ToString());
     }
 
     private static void DisplayMessageIsNotEmpty(string? message)
