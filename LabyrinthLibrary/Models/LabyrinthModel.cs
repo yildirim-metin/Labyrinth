@@ -5,19 +5,26 @@ namespace LabyrinthLibrary.Models;
 public class LabyrinthModel : IEnumerable
 {
     private readonly SortedDictionary<LabyrinthPosition, ILabyrinthElement> _elements;
+    private readonly Dictionary<char, Person> _personMap;
 
     public string Name { get; init; }
-
     public Person? Person { get; private set; }
+    public List<char> PersonKeys { get; set; }
+    public int ActifPersonIndex { get; private set; }
 
     public ILabyrinthElement this[LabyrinthPosition position]
     {
         get => _elements[position];
         set
         {
-            if (value.Content is Person)
+            if (value.Content is Person person)
             {
-                Person = new Person(position);
+                person.Position = position;
+
+                PersonKeys.Add(person.Symbol);
+                _personMap[person.Symbol] = person;
+
+                Person ??= person;
             }
             _elements[position] = value;
         }
@@ -27,6 +34,9 @@ public class LabyrinthModel : IEnumerable
     {
         Name = name;
         _elements = [];
+        _personMap = [];
+        PersonKeys = [];
+        ActifPersonIndex = 0;
     }
 
     public IEnumerator GetEnumerator()
@@ -54,6 +64,21 @@ public class LabyrinthModel : IEnumerable
         _elements[originPosition].Content = null;
         person.Position = destination;
      }
+
+    public void ActivatePerson()
+    {
+        ActifPersonIndex = ++ActifPersonIndex % PersonKeys.Count;
+        char key = PersonKeys[ActifPersonIndex];
+        Person = _personMap[key];
+    }
+
+    public void ActivatePerson(char symbol)
+    {
+        var map = _personMap.SingleOrDefault(p => p.Value.Symbol == char.ToUpper(symbol));
+        if (map.Value == null) return;
+        ActifPersonIndex = PersonKeys.IndexOf(map.Key);
+        Person = map.Value;
+    }
 
     public override string ToString()
     {

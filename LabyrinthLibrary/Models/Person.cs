@@ -2,7 +2,7 @@
 
 public class Person : ILabyrinthObject
 {
-    public char Symbol => 'O';
+    public char Symbol { get; set; }
     public LabyrinthPosition? Position { get; set; }
 
     public ICollection<ILabyrinthObject> Bag { get; set; }
@@ -10,6 +10,11 @@ public class Person : ILabyrinthObject
     public Person()
     {
         Bag = [];
+    }
+
+    public Person(char symbol) : this()
+    {
+        Symbol = symbol;
     }
 
     public Person(LabyrinthPosition position) : this()

@@ -29,6 +29,14 @@ public class LabyrinthController
             {
                 exit = true;
             }
+            else if (infoKey.Key == ConsoleKey.Tab)
+            {
+                Model.ActivatePerson();
+            }
+            else if (char.IsLetter(infoKey.KeyChar))
+            {
+                Model.ActivatePerson(infoKey.KeyChar);
+            }
             else
             {
                 Direction? direction = GetKeyDirection(infoKey);
@@ -60,7 +68,7 @@ public class LabyrinthController
 
     private bool IsGameFinished()
     {
-        return Model.Person!.Position == null;
+        return Model.Person != null && Model.Person.Position == null;
     }
    
     private static Direction? GetKeyDirection(ConsoleKeyInfo infoKey)

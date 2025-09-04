@@ -4,6 +4,8 @@ namespace LabyrinthLibrary.Views;
 
 public class LabyrinthView
 {
+    const string UNDERLINE = "\u0332";
+
     public void Display(LabyrinthModel model, string? message)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -68,10 +70,23 @@ public class LabyrinthView
 
                 column = MoveToColumn(column, element.Key);
 
-                Console.Write(element.Value.Symbol == '_' && element.Value.Content != null ? "O\u0332" : element.Value.Symbol);
+                string symbolToDisplay = IsPersonOpeningDoor(element.Value)
+                    ? $"{element.Value.Content!.Symbol}{UNDERLINE}"
+                    : element.Value.Symbol.ToString();
+
+                if (!SelectCurrentPerson(model, symbolToDisplay, () => Console.Write(symbolToDisplay)))
+                {
+                    Console.Write(symbolToDisplay);
+                }
+
                 column++;
             }
         }
+    }
+
+    private static bool IsPersonOpeningDoor(ILabyrinthElement element)
+    {
+        return element.Symbol == '_' && element.Content != null;
     }
 
     private static int MoveToColumn(int currentColumn, LabyrinthPosition position)
@@ -92,4 +107,26 @@ public class LabyrinthView
             ? $"{endGame}Bravo !"
             : $"{endGame}Dommage...");
     }
+
+    public static bool SelectCurrentPerson(LabyrinthModel model, string symbolToDisplay, WriteSymbol ws)
+    {
+        bool hasPersonActivated = model.Person != null;
+        bool isCurrentPerson = hasPersonActivated && symbolToDisplay == model.Person!.Symbol.ToString();
+        bool hasPersonOpenedDoor = hasPersonActivated && symbolToDisplay == $"{model.Person!.Symbol}{UNDERLINE}";
+
+        if (isCurrentPerson || hasPersonOpenedDoor)
+        {
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+
+            ws.Invoke();
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+
+        return isCurrentPerson || hasPersonOpenedDoor;
+    }
+
+    public delegate void WriteSymbol();
 }
