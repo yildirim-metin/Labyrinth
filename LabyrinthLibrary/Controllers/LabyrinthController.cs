@@ -20,7 +20,7 @@ public class LabyrinthController
         bool exit = false;
         string message = string.Empty;
 
-        while (!exit)
+        while (!exit && !IsGameFinished())
         {
             View.Display(Model, message);
             
@@ -46,6 +46,8 @@ public class LabyrinthController
                 }
             }
         }
+
+        View.DisplayEndGame(Model);
     }
 
     private static bool IsPlayerExitedGame(ConsoleKeyInfo infoKey)
@@ -56,6 +58,11 @@ public class LabyrinthController
         return pressedQ && pressedControl && pressedShift;
     }
 
+    private bool IsGameFinished()
+    {
+        return Model.Person!.Position == null;
+    }
+   
     private static Direction? GetKeyDirection(ConsoleKeyInfo infoKey)
     {
         return infoKey.Key switch
