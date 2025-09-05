@@ -1,7 +1,4 @@
-﻿
-using LabyrinthLibrary.Commons.Exceptions;
-
-namespace LabyrinthLibrary.Models;
+﻿namespace LabyrinthLibrary.Commons.Exceptions;
 
 public class OutOfLabyrinthException : LabyrinthException
 {

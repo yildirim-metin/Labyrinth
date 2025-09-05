@@ -1,4 +1,6 @@
-﻿namespace LabyrinthLibrary.Models;
+﻿using LabyrinthLibrary.Commons.Exceptions;
+
+namespace LabyrinthLibrary.Models;
 
 public class Person : ILabyrinthObject
 {
@@ -24,6 +26,21 @@ public class Person : ILabyrinthObject
 
     public void Visit(Person person)
     {
-        throw new NotImplementedException();
+        if (person.Bag.Count > 0)
+        {
+            foreach (var item in person.Bag)
+            {
+                Bag.Add(item);
+            }
+            person.Bag.Clear();
+         
+            throw new PersonCollisionException(
+                $"Personnage {person.Symbol} a donné ces affaires au personnage {Symbol}");
+        }
+        else
+        {
+            throw new PersonCollisionException(
+                $"Personnage {person.Symbol} est bloqué par le personnage {Symbol}");
+        }
     }
 }

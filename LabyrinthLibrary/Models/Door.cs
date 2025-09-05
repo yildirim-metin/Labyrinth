@@ -1,4 +1,6 @@
-﻿namespace LabyrinthLibrary.Models;
+﻿using LabyrinthLibrary.Commons.Exceptions;
+
+namespace LabyrinthLibrary.Models;
 
 public class Door : ILabyrinthElement
 {

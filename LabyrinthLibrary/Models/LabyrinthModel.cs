@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using LabyrinthLibrary.Commons.Exceptions;
+using System.Collections;
 
 namespace LabyrinthLibrary.Models;
 

@@ -18,10 +18,8 @@ public class Room : ILabyrinthElement
 
     public void Visit(Person person)
     {
-        if (Content is Key key)
-        {
-            key.Visit(person);
-        }
+        Content?.Visit(person);
+        
         Content = person;
     }
 }
