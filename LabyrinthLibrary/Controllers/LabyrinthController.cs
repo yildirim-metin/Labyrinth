@@ -68,7 +68,7 @@ public class LabyrinthController
 
     private bool IsGameFinished()
     {
-        return Model.Person != null && Model.Person.Position == null;
+        return Model.PersonKeys.Count == 0;
     }
    
     private static Direction? GetKeyDirection(ConsoleKeyInfo infoKey)

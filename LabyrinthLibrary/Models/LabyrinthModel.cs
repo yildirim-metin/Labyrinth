@@ -63,6 +63,7 @@ public class LabyrinthModel : IEnumerable
         {
             person.Position = null;
             _elements[originPosition].Content = null;
+            PersonKeys.Remove(person.Symbol);
             throw new OutOfLabyrinthException();
         }
 
